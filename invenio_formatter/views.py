@@ -84,6 +84,9 @@ def create_badge_blueprint(allowed_types):
 
         else:
             response.cache_control.public = True
+            response.cache_control.max_age = current_app.config[
+                "FORMATTER_BADGES_MAX_CACHE_AGE"
+            ]
 
         return response.make_conditional(request)
 
