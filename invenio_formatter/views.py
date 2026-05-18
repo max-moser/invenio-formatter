@@ -82,6 +82,9 @@ def create_badge_blueprint(allowed_types):
             )
             response.expires = response.last_modified + extra
 
+        else:
+            response.cache_control.public = True
+
         return response.make_conditional(request)
 
     return blueprint
